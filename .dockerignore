@@ -1,0 +1,6 @@
+.git
+examples
+tests
+training
+*.npz
+*.pt

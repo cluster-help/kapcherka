@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kapcherka"
+version = "1.0.0"
+description = "Распознавание капчи сайтов судов РФ (ГАС «Правосудие»: sudrf.ru, msudrf.ru)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "PolyForm-Noncommercial-1.0.0" }
+authors = [{ name = "Cluster" }]
+dependencies = ["onnxruntime>=1.16", "numpy>=1.23", "pillow>=9.0"]
+keywords = ["captcha", "ocr", "sudrf", "gas-pravosudie", "onnx"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Other/Proprietary License",
+    "Operating System :: OS Independent",
+    "Natural Language :: Russian",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+
+[project.optional-dependencies]
+train = ["torch>=2.1", "onnx>=1.14"]
+test = ["pytest>=7"]
+
+[project.scripts]
+kapcherka = "kapcherka.cli:main"
+
+[tool.setuptools]
+packages = ["kapcherka"]
+
+[tool.setuptools.package-data]
+kapcherka = ["models/*.onnx", "models/*.txt"]
